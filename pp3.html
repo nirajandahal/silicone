@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoCement Solutions - Revolutionary Sustainable Manufacturing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #1a3d35;
+            --primary-main: #047cc8;
+            --primary-light: #40916c;
+            --accent-orange: #ff6b35;
+            --accent-gold: #ffb700;
+            --neutral-dark: #1f2937;
+            --neutral-medium: #6b7280;
+            --neutral-light: #f8fafc;
+            --white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--neutral-dark);
+            overflow-x: hidden;
+            background: var(--neutral-light);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--neutral-light);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-main);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Floating Navigation */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 50px;
+            padding: 12px 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-main), var(--accent-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--neutral-dark);
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(45, 106, 79, 0.1);
+            color: var(--primary-main);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary-main), var(--primary-light));
+            color: white !important;
+            padding: 12px 24px !important;
+            border-radius: 25px;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(45, 106, 79, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(45, 106, 79, 0.4);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-main)) !important;
+        }
+
+        /* Mobile Menu Toggle Button */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1001;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--neutral-dark);
+    margin: 3px 0;
+    transition: all 0.3s ease;
+    border-radius: 3px;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Mobile Navigation Styles */
+@media (max-width: 768px) {
+    .nav-container {
+        justify-content: space-between;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+        order: 3;
+    }
+    
+    .nav-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        z-index: 1000;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .nav-menu li {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: slideInFromTop 0.5s ease forwards;
+    }
+    
+    .nav-menu.active li:nth-child(1) { animation-delay: 0.1s; }
+    .nav-menu.active li:nth-child(2) { animation-delay: 0.2s; }
+    .nav-menu.active li:nth-child(3) { animation-delay: 0.3s; }
+    .nav-menu.active li:nth-child(4) { animation-delay: 0.4s; }
+    .nav-menu.active li:nth-child(5) { animation-delay: 0.5s; }
+    .nav-menu.active li:nth-child(6) { animation-delay: 0.6s; }
+    
+    .nav-menu a {
+        font-size: 1.5rem;
+        font-weight: 700;
+        padding: 15px 30px;
+        border-radius: 30px;
+        text-align: center;
+        min-width: 200px;
+        color: var(--neutral-dark);
+        text-decoration: none;
+    }
+    
+    .nav-menu a:hover {
+        background: rgba(45, 106, 79, 0.1);
+        color: var(--primary-main);
+    }
+    
+    .nav-cta {
+        background: linear-gradient(135deg, var(--primary-main), var(--primary-light)) !important;
+        color: white !important;
+        box-shadow: 0 8px 25px rgba(45, 106, 79, 0.4);
+    }
+    
+    .nav-cta:hover {
+        background: linear-gradient(135deg, var(--primary-dark), var(--primary-main)) !important;
+    }
+}
+
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hide menu when clicking outside */
+.nav-menu.active ~ .mobile-menu-overlay {
+    display: block;
+}
+
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+
+
+
+        /* Hero Section with Particles */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-main) 50%, var(--primary-light) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 1; }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 1000px;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff, #e8f5e8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 40px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-gold));
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 16px 32px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: linear-gradient(135deg, var(--primary-main), var(--primary-light));
+            padding: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 120px 0;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: var(--neutral-medium);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+
+        .section-title-light, .section-subtitle-light{
+                color: #e8f5e8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-main), var(--accent-orange));
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-main), var(--primary-light));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 24px;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 16px;
+        }
+
+        .feature-description {
+            color: var(--neutral-medium);
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, var(--neutral-light), #f0f9ff);
+        }
+
+        .process-timeline {
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-main), var(--accent-orange));
+            border-radius: 2px;
+        }
+
+        .process-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .process-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .process-content {
+            flex: 1;
+            padding: 40px;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            margin: 0 40px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .process-content:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .process-number {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: white;
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .process-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 16px;
+        }
+
+        .process-description {
+            color: var(--neutral-medium);
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 120px 0;
+            background: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary-main), var(--accent-orange));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .team-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-main), var(--accent-orange));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: white;
+            margin: 0 auto 24px;
+            box-shadow: 0 10px 30px rgba(45, 106, 79, 0.3);
+        }
+
+        .team-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+
+        .team-role {
+            color: var(--accent-orange);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+        }
+
+        .team-bio {
+            color: var(--neutral-medium);
+            line-height: 1.7;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-main));
+            color: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-gold));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 24px;
+        }
+
+        .product-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .product-description {
+            opacity: 0.9;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-size: 1.1rem;
+        }
+
+        .product-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .feature-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 120px 0;
+            background: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .testimonial-card {
+            background: var(--neutral-light);
+            padding: 40px;
+            border-radius: 24px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 30px;
+            font-size: 6rem;
+            color: var(--accent-orange);
+            font-weight: 900;
+            opacity: 0.3;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: var(--neutral-dark);
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 4px;
+        }
+
+        .testimonial-company {
+            color: var(--accent-orange);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--neutral-dark);
+            color: white;
+            padding: 80px 0 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-orange);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-orange);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 40px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                top: 10px;
+                left: 10px;
+                right: 10px;
+                transform: none;
+                padding: 16px 20px;
+            }
+
+            .nav-container {
+                gap: 20px;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .process-timeline::before {
+                left: 30px;
+            }
+
+            .process-item {
+                flex-direction: column !important;
+                align-items: flex-start;
+            }
+
+            .process-content {
+                margin-left: 60px;
+                margin-right: 0;
+            }
+
+            .process-number {
+                left: 30px;
+            }
+
+            .products-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">EcoCement</a>
+            
+            <!-- Navigation Menu -->
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact" class="nav-cta">Contact</a></li>
+            </ul>
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="particles"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Revolutionary Sustainable Manufacturing</h1>
+            <p class="hero-subtitle">Built for Cement. Engineered for the Planet. Powered by Innovation.</p>
+            <div class="hero-cta">
+                <a href="#products" class="btn-primary">
+                    Explore Solutions →
+                </a>
+                <a href="#features" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-number">95%</span>
+                <span class="stat-label">Recycled Materials</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">60%</span>
+                <span class="stat-label">CO₂ Reduction</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">500+</span>
+                <span class="stat-label">Projects Completed</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">30+</span>
+                <span class="stat-label">Years Experience</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose EcoCement?</h2>
+                <p class="section-subtitle">Advanced technology meets environmental responsibility to deliver superior cement solutions for modern construction.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="feature-title">AI-Powered Production</h3>
+                    <p class="feature-description">Our advanced AI systems optimize mixing ratios in real-time, ensuring consistent quality while minimizing waste and energy consumption by 40%.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">♻️</div>
+                    <h3 class="feature-title">100% Sustainable</h3>
+                    <p class="feature-description">Using 95% recycled materials and renewable energy sources, we've achieved carbon-neutral production with zero waste to landfill.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🏗️</div>
+                    <h3 class="feature-title">Superior Strength</h3>
+                    <p class="feature-description">Our innovative formulation delivers 25% higher compressive strength than traditional cement while maintaining exceptional durability.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Rapid Setting</h3>
+                    <p class="feature-description">Achieve full structural strength in 24 hours with our fast-setting technology, perfect for time-sensitive construction projects.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🌡️</div>
+                    <h3 class="feature-title">Climate Resistant</h3>
+                    <p class="feature-description">Engineered to withstand extreme weather conditions, from -40°C to 60°C, ensuring longevity in any environment.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🔬</div>
+                    <h3 class="feature-title">ISO 9001 Certified</h3>
+                    <p class="feature-description">Every batch undergoes rigorous testing with our automated quality control systems, guaranteeing consistent performance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section" id="process">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Manufacturing Process</h2>
+                <p class="section-subtitle">From waste to wonder - discover how we transform industrial byproducts into premium cement solutions.</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-item animate-on-scroll">
+                    <div class="process-number">1</div>
+                    <div class="process-content">
+                        <h3 class="process-title">Raw Material Collection</h3>
+                        <p class="process-description">We source 95% of our materials from industrial waste streams including fly ash, slag, and recycled aggregates. Our AI-powered logistics system optimizes collection routes and material quality assessment.</p>
+                    </div>
+                </div>
+                <div class="process-item animate-on-scroll">
+                    <div class="process-number">2</div>
+                    <div class="process-content">
+                        <h3 class="process-title">Smart Processing</h3>
+                        <p class="process-description">Advanced crushing and grinding systems powered by renewable energy process raw materials to precise specifications. Real-time quality monitoring ensures optimal particle size distribution.</p>
+                    </div>
+                </div>
+                <div class="process-item animate-on-scroll">
+                    <div class="process-number">3</div>
+                    <div class="process-content">
+                        <h3 class="process-title">AI-Optimized Mixing</h3>
+                        <p class="process-description">Our proprietary AI algorithms analyze thousands of variables to determine optimal mixing ratios, resulting in superior strength and consistency while minimizing environmental impact.</p>
+                    </div>
+                </div>
+                <div class="process-item animate-on-scroll">
+                    <div class="process-number">4</div>
+                    <div class="process-content">
+                        <h3 class="process-title">Quality Assurance</h3>
+                        <p class="process-description">Every batch undergoes comprehensive testing using automated systems. Our ISO 9001 certified process ensures consistent quality and performance standards.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section" id="team">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Meet Our Team</h2>
+                <p class="section-subtitle">Industry experts and innovators driving the future of sustainable construction materials.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card animate-on-scroll">
+                    <div class="team-avatar">DR</div>
+                    <h3 class="team-name">Dr. Sarah Chen</h3>
+                    <p class="team-role">Chief Technology Officer</p>
+                    <p class="team-bio">PhD in Materials Science with 15 years experience in sustainable cement technology. Pioneer in AI-driven manufacturing optimization.</p>
+                </div>
+                <div class="team-card animate-on-scroll">
+                    <div class="team-avatar">MJ</div>
+                    <h3 class="team-name">Michael Johnson</h3>
+                    <p class="team-role">VP of Operations</p>
+                    <p class="team-bio">Former Boeing engineer specializing in lean manufacturing and quality systems. Expert in scaling sustainable production processes.</p>
+                </div>
+                <div class="team-card animate-on-scroll">
+                    <div class="team-avatar">AK</div>
+                    <h3 class="team-name">Aisha Kumar</h3>
+                    <p class="team-role">Head of Sustainability</p>
+                    <p class="team-bio">Environmental engineer focused on circular economy principles. Led carbon-neutral initiatives across multiple industries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title section-title-light">Our Product Lines</h2>
+                <p class="section-subtitle section-subtitle-light">Comprehensive cement solutions engineered for every construction challenge.</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card animate-on-scroll">
+                    <div class="product-icon">🏢</div>
+                    <h3 class="product-title">EcoStruct Pro</h3>
+                    <p class="product-description">High-performance cement for commercial and industrial construction. Delivers exceptional strength and durability for critical infrastructure projects.</p>
+                    <div class="product-features">
+                        <span class="feature-badge">60 MPa Strength</span>
+                        <span class="feature-badge">Fast Setting</span>
+                        <span class="feature-badge">Weather Resistant</span>
+                    </div>
+                </div>
+                <div class="product-card animate-on-scroll">
+                    <div class="product-icon">🏠</div>
+                    <h3 class="product-title">EcoHome Plus</h3>
+                    <p class="product-description">Perfect for residential construction with enhanced workability and finish quality. Ideal for foundations, driveways, and decorative applications.</p>
+                    <div class="product-features">
+                        <span class="feature-badge">Easy Mix</span>
+                        <span class="feature-badge">Smooth Finish</span>
+                        <span class="feature-badge">Cost Effective</span>
+                    </div>
+                </div>
+                <div class="product-card animate-on-scroll">
+                    <div class="product-icon">🌊</div>
+                    <h3 class="product-title">EcoMarine</h3>
+                    <p class="product-description">Specialized marine-grade cement resistant to saltwater corrosion. Engineered for coastal construction and underwater applications.</p>
+                    <div class="product-features">
+                        <span class="feature-badge">Corrosion Resistant</span>
+                        <span class="feature-badge">Marine Grade</span>
+                        <span class="feature-badge">Ultra Durable</span>
+                    </div>
+                </div>
+                <div class="product-card animate-on-scroll">
+                    <div class="product-icon">🔥</div>
+                    <h3 class="product-title">EcoFire Shield</h3>
+                    <p class="product-description">Fire-resistant cement for high-temperature applications. Maintains structural integrity in extreme conditions up to 1200°C.</p>
+                    <div class="product-features">
+                        <span class="feature-badge">Fire Resistant</span>
+                        <span class="feature-badge">High Temperature</span>
+                        <span class="feature-badge">Industrial Grade</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle">Real feedback from construction professionals who trust EcoCement Solutions.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card animate-on-scroll">
+                    <p class="testimonial-text">EcoCement has revolutionized our construction process. The strength and sustainability make it our go-to choice for all major projects.</p>
+                    <p class="testimonial-author">James Mitchell</p>
+                    <p class="testimonial-company">Mitchell Construction Group</p>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <p class="testimonial-text">Outstanding quality and environmental benefits. We've reduced our carbon footprint by 40% since switching to EcoCement products.</p>
+                    <p class="testimonial-author">Lisa Rodriguez</p>
+                    <p class="testimonial-company">GreenBuild Architects</p>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <p class="testimonial-text">The technical support and product consistency are exceptional. EcoCement helps us deliver projects on time and budget.</p>
+                    <p class="testimonial-author">David Wong</p>
+                    <p class="testimonial-company">Pacific Infrastructure</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EcoCement Solutions</h3>
+                    <p>Leading the revolution in sustainable cement manufacturing with innovative technology and environmental responsibility.</p>
+                    <p>📍 Kathmandu, Nepal</p>
+                    <p>📞 (977) 123-4567</p>
+                    <p>✉️ info@ecocementsolutions.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Products</h3>
+                    <a href="#products">EcoStruct Pro</a>
+                    <a href="#products">EcoHome Plus</a>
+                    <a href="#products">EcoMarine</a>
+                    <a href="#products">EcoFire Shield</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <a href="#features">About Us</a>
+                    <a href="#process">Our Process</a>
+                    <a href="#team">Team</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <a href="#">Technical Specs</a>
+                    <a href="#">Case Studies</a>
+                    <a href="#">Sustainability Report</a>
+                    <a href="#">Safety Data Sheets</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EcoCement Solutions. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.querySelector('.particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles when page loads
+        document.addEventListener('DOMContentLoaded', createParticles);
+
+        // Add hover effects to cards
+        document.querySelectorAll('.feature-card, .team-card, .product-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Stats counter animation
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                const increment = target / 100;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = Math.floor(current) + (stat.textContent.includes('%') ? '%' : stat.textContent.includes('+') ? '+' : '');
+                }, 20);
+            });
+        }
+
+        // Trigger stats animation when section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats-bar');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+       // Mobile Navigation Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                mobileMenuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+       
+    </script>
+</body>
+</html>
+
