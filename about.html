@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J Synthetics - Premium Industrial Packaging</title>
+    <meta name="description" content="Cutting-edge sustainable packaging solutions that combine precision engineering with environmental consciousness">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Synthetics</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+<!-- About Us Page - Variation 2: Full Layout -->
+<section class="about-hero fade-in">
+    <div class="about-hero-container">
+      <h1 class="about-hero-title">Sustainable Innovation Meets Industrial Precision</h1>
+      <p class="about-hero-subtitle">
+        J Synthetics is where eco-conscious engineering meets high-performance packaging. We build solutions that protect both your products and the planet.
+      </p>
+    </div>
+  </section>
+  
+  <section class="about-story slide-in-left">
+    <div class="about-story-container">
+      <div class="story-text">
+        <h2>Our Origin</h2>
+        <p>
+          Born from the idea that sustainability and strength can coexist, J Synthetics began as a material science startup focused on eco-engineered packaging. With roots in industrial design and a heart committed to the environment, we’ve evolved into a global leader trusted by hundreds of clients.
+        </p>
+        <p>
+          Every material we develop and every solution we build reflects our commitment to durability, recyclability, and reducing industrial waste. Our journey is one of research, resilience, and relentless improvement.
+        </p>
+      </div>
+      <div class="story-image">
+        <img src="images/eco-factory.jpg" alt="Eco-friendly Factory View" />
+      </div>
+    </div>
+  </section>
+  
+  <section class="about-timeline">
+    
+    <div class="timeline-container">
+        <h2 class="section-title fade-in">Milestones of Innovation</h2>
+      <div class="timeline-item slide-in-left">
+        <span class="timeline-icon">🛠</span>
+        <div class="timeline-content">
+          <h3>2010 - Foundation Laid</h3>
+          <p>J Synthetics launched with a core vision to reimagine industrial packaging through green technology and advanced materials.</p>
+        </div>
+      </div>
+      <div class="timeline-item slide-in-right">
+        <span class="timeline-icon">🏭</span>
+        <div class="timeline-content">
+          <h3>2014 - First Manufacturing Plant</h3>
+          <p>We opened our first eco-certified manufacturing plant, setting new standards in sustainable operations.</p>
+        </div>
+      </div>
+      <div class="timeline-item slide-in-left">
+        <span class="timeline-icon">🌍</span>
+        <div class="timeline-content">
+          <h3>2018 - Global Expansion</h3>
+          <p>Our solutions reached over 25 countries, with packaging innovations tailored to regional industrial needs.</p>
+        </div>
+      </div>
+      <div class="timeline-item slide-in-right">
+        <span class="timeline-icon">🧪</span>
+        <div class="timeline-content">
+          <h3>2023 - R&D Lab Launch</h3>
+          <p>We launched an in-house innovation lab to research plant-based polymers, foam alternatives, and intelligent packaging systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="about-values fade-in">
+    <h2>Our Values</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">♻️</div>
+        <h3>Sustainability</h3>
+        <p>We integrate circular design principles into every product we offer.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🚚</div>
+        <h3>Reliability</h3>
+        <p>Every client counts on our packaging to protect their goods in harsh environments.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">💡</div>
+        <h3>Innovation</h3>
+        <p>From biodegradable foams to smart wraps, innovation is in our DNA.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <h3>Partnership</h3>
+        <p>We collaborate closely with clients to co-engineer custom packaging solutions.</p>
+      </div>
+    </div>
+  </section>
+  
+  <section class="about-impact slide-in-left">
+    <div class="impact-container">
+      <div class="impact-text">
+        <h2>Global Impact by the Numbers</h2>
+        <ul class="impact-list">
+          <li>🌐 Serving 50+ Countries</li>
+          <li>🎯 99% On-Time Delivery</li>
+          <li>🔁 1200+ Tons of Plastic Recycled</li>
+          <li>🏆 3x Sustainability Award Winner</li>
+        </ul>
+      </div>
+      <div class="impact-visual">
+        <img src="images/sustainability-impact.jpg" alt="Packaging Sustainability Impact" />
+      </div>
+    </div>
+  </section>
+  
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 VerdantForge Dynamics. All rights reserved. | Crafting sustainable futures through premium packaging solutions.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        let mouseX = 0;
+        let mouseY = 0;
+        let cursorX = 0;
+        let cursorY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            const dx = mouseX - cursorX;
+            const dy = mouseY - cursorY;
+            
+            cursorX += dx * 0.1;
+            cursorY += dy * 0.1;
+            
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            
+            requestAnimationFrame(animateCursor);
+        }
+
+        animateCursor();
+
+        // Show cursor on mouse move
+        document.addEventListener('mousemove', () => {
+            cursor.style.opacity = '1';
+        });
+
+        // Hide cursor when leaving window
+        document.addEventListener('mouseleave', () => {
+            cursor.style.opacity = '0';
+        });
+
+        // Cursor hover effects
+        const hoverElements = document.querySelectorAll('a, button, .product-card, .stat-card');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('active');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation for stats
+        function animateCounter(element, target, duration = 2000) {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    element.textContent = Math.floor(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            };
+            
+            updateCounter();
+        }
+
+        // Trigger counter animation when stats are visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const target = parseInt(stat.dataset.target);
+                        animateCounter(stat, target);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Form submission with animation
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Sending...';
+            submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                submitBtn.textContent = 'Message Sent! ✓';
+                submitBtn.style.background = 'linear-gradient(135deg, #059669, #047857)';
+                
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.background = 'var(--gradient-2)';
+                    submitBtn.disabled = false;
+                    this.reset();
+                }, 3000);
+            }, 2000);
+        });
+
+        // Parallax effect for hero background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroBackground = document.querySelector('.hero-bg');
+            if (heroBackground) {
+                heroBackground.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Add stagger animation to product cards
+        const productCards = document.querySelectorAll('.product-card');
+        productCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.2}s`;
+        });
+
+        // Add stagger animation to stat cards
+        const statCards = document.querySelectorAll('.stat-card');
+        statCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        // Enhanced hover effects for buttons
+        const buttons = document.querySelectorAll('.btn-primary, .btn-secondary');
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.02)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
