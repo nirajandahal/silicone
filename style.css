@@ -2340,7 +2340,304 @@ body {
 
 
 
+  /* Product Showcase */
+  .product-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 3rem 2rem;
+  }
+  
+  .product-item {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    background: var(--white);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  }
+  
+  .product-item.reverse {
+    flex-direction: row-reverse;
+  }
+  
+  .product-image {
+    flex: 1;
+    overflow: hidden;
+  }
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .4s ease;
+  }
+  .product-item:hover .product-image img {
+    transform: scale(1.05);
+  }
+  
+  .product-info {
+    flex: 1;
+    padding: 2rem;
+  }
+  .product-info h2 {
+    font-size: 2rem;
+    margin-bottom: .8rem;
+    color: var(--primary-green);
+  }
+  .product-info p {
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    color: var(--gray);
+  }
+  
+  /* Feature Tags */
+  .feature-tags {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    display: flex;
+    gap: .6rem;
+    flex-wrap: wrap;
+  }
+  .feature-tags li {
+    background: var(--light-green);
+    color: var(--primary-green);
+    padding: .4rem .8rem;
+    border-radius: 50px;
+    font-size: .85rem;
+    font-weight: 500;
+  }
+  
+  /* Price */
+  .price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .price span {
+    font-size: .9rem;
+    font-weight: 400;
+    color: var(--gray);
+    margin-left: .4rem;
+  }
+  
+  
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .product-item, .product-item.reverse {
+      flex-direction: column;
+    }
+  }
+  
 
+  /* Grid Layout */
+  .modern-listing {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 3rem 2rem;
+    background: var(--dark);
+  }
+  
+  /* Product Card */
+  .product-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+    cursor: pointer;
+  }
+  .product-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s ease;
+  }
+  .product-card:hover img {
+    transform: scale(1.08);
+  }
+  
+  /* Overlay */
+  .overlay {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: var(--white);
+    transition: bottom .4s ease;
+  }
+  .product-card:hover .overlay {
+    bottom: 0;
+  }
+  
+  .overlay h2 {
+    font-size: 1.4rem;
+    margin-bottom: .5rem;
+    color: var(--white);
+  }
+  .overlay p {
+    font-size: .95rem;
+    margin-bottom: .8rem;
+    color: var(--light-gray);
+  }
+  
+  /* Price */
+  .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--gold);
+    margin-bottom: .8rem;
+  }
+  .price span {
+    font-size: .85rem;
+    font-weight: 400;
+  }
+  
+  
+  /* Responsive Adjustments */
+  @media (max-width: 600px) {
+    .overlay {
+      bottom: 0;
+      background: rgba(0,0,0,0.6);
+    }
+  }
+  
 
+  /* Modern grid */
 
+  .gallery-section {
+    margin: 30px auto;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 1rem;
+    height: 240px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    background: var(--light-gray);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  
+  .gallery-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .4s ease;
+  }
+  
+  .gallery-item:hover img {
+    transform: scale(1.08);
+  }
+  
+  /* Play icon for videos */
+  .play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: var(--white);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.6rem 1rem;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  
+  /* Modern lightbox */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 1rem;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(16px);
+    animation: fadeIn 0.3s ease forwards;
+  }
+  
+  .lightbox.hidden {
+    display: none;
+  }
+  
+  .lightbox img,
+  .lightbox video {
+    max-width: 90%;
+    max-height: 75%;
+    border-radius: 1rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: zoomIn 0.35s ease forwards;
+  }
+  
+  /* Controls */
+  .lightbox .close,
+  .lightbox .prev,
+  .lightbox .next {
+    position: absolute;
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.6rem;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    z-index: 1001;
+    transition: background 0.3s ease;
+  }
+  
+  .lightbox .close:hover,
+  .lightbox .prev:hover,
+  .lightbox .next:hover {
+    background: var(--accent-green);
+  }
+  
+  .lightbox .close { top: 20px; right: 30px; }
+  .lightbox .prev { top: 50%; left: 20px; transform: translateY(-50%); }
+  .lightbox .next { top: 50%; right: 20px; transform: translateY(-50%); }
+  
+  /* Caption */
+  #lightbox-caption {
+    color: var(--white);
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    font-weight: 300;
+    text-align: center;
+    max-width: 80%;
+    line-height: 1.4;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 0.6rem 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes zoomIn {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
   
